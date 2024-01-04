@@ -1,4 +1,4 @@
-// Initializing all elements constants
+
 const temperateField = document.querySelector(".weather1");
 const cityField = document.querySelector(".weather2 p");
 const dateField = document.querySelector(".weather2 span");
@@ -7,13 +7,13 @@ const weatherField = document.querySelector(".weather3 span");
 const searchField = document.querySelector(".searchField");
 const form = document.querySelector("form");
 
-// Adding event listen to the form
+
 form.addEventListener("submit", search);
 
-// Default Location
-let target = "delhi";
 
-// Function to fetch Data from Weather API
+let target = "Delhi";
+
+
 const fetchData = async (target) => {
   try {
     const url = `https://api.weatherapi.com/v1/current.json?key=5b27a6ef3547402582e62007222306&q=${target}`;
@@ -43,14 +43,14 @@ function updateDom(temperate, city, time, emoji, text) {
   const exactDate = time.split(" ")[0];
   const exactDay = getDayFullName(new Date(exactDate).getDay());
 
-  temperateField.innerText = temperate;
+  temperateField.innerText = temperate+"°C";
   cityField.innerText = city;
   dateField.innerText = `${exactTime} - ${exactDay}   ${exactDate}`;
   emojiField.src = emoji;
   weatherField.innerText = text;
 }
 
-fetchData(target);
+
 
 // Function to search the location
 function search(e) {
@@ -61,7 +61,7 @@ function search(e) {
   fetchData(target);
 }
 
-// Function to get the name of day
+
 function getDayFullName(num) {
   switch (num) {
     case 0:
@@ -83,9 +83,9 @@ function getDayFullName(num) {
       return "Friday";
 
     case 6:
-      return "Saturdat";
+      return "Saturday";
 
     default:
-      return "Don't Know";
+      return "Error";
   }
 }
